@@ -14,7 +14,7 @@
 
 - A seguir encontram-se as etapas para prosseguir com o deploy da máquina com Jenkins.
 
-**Clone o projeto e acesse a pasta "00-pipeline-shell-deploy-jenkins"**
+#### Clone o projeto e acesse a pasta "00-pipeline-shell-deploy-jenkins"
 
 ```bash
 $ git clone https://github.com/Marianaajpereira/projeto-final-gama-five.git && cd 00-pipeline-shell-deploy-jenkins
