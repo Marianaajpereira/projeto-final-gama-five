@@ -20,7 +20,7 @@
 $ git clone https://github.com/Marianaajpereira/projeto-final-gama-five.git && cd 00-pipeline-shell-deploy-jenkins
 ```
 
-**Edição do arquivo "main" da pasta terraform**
+### Edição do arquivo "main" da pasta terraform
 
 Edite o arquivo "main" com as configurações da sua máquina de desenvolvimento:
 
