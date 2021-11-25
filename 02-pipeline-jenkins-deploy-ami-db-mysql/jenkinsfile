@@ -17,6 +17,7 @@ pipeline {
             steps {
                 sh "chmod +x -R ${env.WORKSPACE}"
                 sh "02-pipeline-jenkins-deploy-ami-db-mysql/deploy_ansible.sh"
+                sh "02-pipeline-jenkins-deploy-ami-db-mysql/acessos_mysql.sh"
             }
         }
         stage('Test db') {
@@ -24,7 +25,7 @@ pipeline {
                 sh "02-pipeline-jenkins-deploy-ami-db-mysql/test.sh"
             }
         }
-        stage('Build AMI') {
+        stage('Build AMI db') {
             steps {
                 sh "02-pipeline-jenkins-deploy-ami-db-mysql/package-ami.sh"
             }
