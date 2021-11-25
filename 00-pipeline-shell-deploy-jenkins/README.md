@@ -14,12 +14,13 @@
 
 - A seguir encontram-se as etapas para prosseguir com o deploy da máquina com Jenkins.
 
-** Clone o projeto e acesse a pasta "00-pipeline-shell-deploy-jenkins" **
+**Clone o projeto e acesse a pasta "00-pipeline-shell-deploy-jenkins"**
 
 ```bash
 $ git clone https://github.com/Marianaajpereira/projeto-final-gama-five.git && cd 00-pipeline-shell-deploy-jenkins
 ```
-### Edição do arquivo "main" da pasta terraform
+
+**Edição do arquivo "main" da pasta terraform**
 
 Edite o arquivo "main" com as configurações da sua máquina de desenvolvimento:
 
@@ -30,14 +31,16 @@ ami       = "sua subnet"
 key_name  = "sua_chave_privada"
 vpc_id    = "sua_vpc" 
 ```
-### Execução do arquivo "deploy.sh"
+
+**Execução do arquivo "deploy.sh"**
 
 Executar o arquivo "deploy.sh", contendo o script que irá aplicar tanto os camandos do Terraform quanto do Ansible, realizando o provisionameto da máquina com Jenkins.
 
 ```bash
 ./deploy.sh
 ```
-### Término da configuração do Jenkins"
+
+**Término da configuração do Jenkins"**
 
 Tudo pronto! Agora, basta acessar o link que estará disponível no terminal após término do processamento do Ansible e seguir com a configuração incial do Jenkins, que pode ser resumida nas seguintes etapas:
 
