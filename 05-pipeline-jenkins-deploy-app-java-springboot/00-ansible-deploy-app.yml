@@ -1,5 +1,5 @@
 - name: DEPLOYING SPRINGBOOT WEB APP
-  hosts: masters-primary
+  hosts: masters_primary
   become: yes
   tasks:
     - name: "Upload k8s-deploy"
