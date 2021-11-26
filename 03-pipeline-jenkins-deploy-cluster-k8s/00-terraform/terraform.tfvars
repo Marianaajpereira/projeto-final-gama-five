@@ -73,3 +73,5 @@ instance_k8s_worker_object = {
     instance_sub_group = "regular"
   }
 }
+
+sg_public_id = "sg-06c268091087ae05d"

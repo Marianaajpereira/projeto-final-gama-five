@@ -45,16 +45,6 @@ variable "admin_sg_id" {
   type        = string
 }
 
-variable "public_subnet_object" {
-  description = "Public subnet template for Kubernetes environment."
-  type = object({
-    name              = string
-    cidr_first_block  = number
-    cidr_second_block = number
-    cidr_third_block  = number
-  })
-}
-
 variable "private_subnet_object" {
   description = "Private subnet template for Kubernetes environment."
   type = object({
@@ -73,14 +63,6 @@ variable "nlb_lb_proxy_object" {
   })
 }
 
-
-variable "sg_public_object" {
-  description = "Security group data for Public subnets in Kubernetes environment."
-  type = object({
-    name        = string
-    description = string
-  })
-}
 
 variable "sg_master_object" {
   description = "Security group data for Master nodes in Kubernetes environment."
