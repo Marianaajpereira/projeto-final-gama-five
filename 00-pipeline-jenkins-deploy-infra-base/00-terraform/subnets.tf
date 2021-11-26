@@ -58,8 +58,8 @@ resource "aws_nat_gateway" "private_subnet_nat_gtw" {
 # ----------------------------------------------------------------------------
 # NAT gateways for private subnets external (internet) access association
 
-resource "aws_route_table_association" "rtb_nat_gtw_association" {
+resource "aws_route" "rtb_nat_gtw_routes" {
   for_each = aws_nat_gateway.private_subnet_nat_gtw
-  gateway_id     = each.value.id
   route_table_id = var.vpc_data.route_table_private
+  nat_gateway_id = each.value.id
 }
