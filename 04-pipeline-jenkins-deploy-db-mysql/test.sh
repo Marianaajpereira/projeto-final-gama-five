@@ -1,6 +1,6 @@
 #!/bin/bash
 cd  04-pipeline-jenkins-deploy-db-mysql/00-terraform
-uri=$(terraform output | grep private_ip | awk '{print $2;exit}' | sed -e "s/\",//g")
+uri=$(terraform output | grep IP | awk '{print $2;exit}' | sed -e "s/\",//g")
 
 echo $uri
 
