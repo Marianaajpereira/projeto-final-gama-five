@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone repo') {
+            steps {
+                git url: 'https://github.com/Marianaajpereira/projeto-final-gama-five', branch: 'master'
+            }
+        }
+        stage('Build base network infrastructure') {
+            steps {
+                sh "chmod +x -R ${env.WORKSPACE}"
+                sh "01-pipeline-jenkins-deploy-infra-base/00-deploy_infra.sh"
+            }
+        }
+    }
+}

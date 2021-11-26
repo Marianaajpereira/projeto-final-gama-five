@@ -47,9 +47,19 @@ resource "aws_nat_gateway" "private_subnet_nat_gtw" {
   allocation_id = each.value
 
   tags = {
-    "Name" = "private_subnet_nat_gtw"
+    "Name" = "private_subnet_nat_gtw_${each.key}"
     "eip-id" = "${each.value}"
     "subnet-id" = "${each.key}"
     "project" = "${var.project.name}"
   }
+}
+
+
+# ----------------------------------------------------------------------------
+# NAT gateways for private subnets external (internet) access association
+
+resource "aws_route_table_association" "rtb_nat_gtw_association" {
+  for_each = aws_nat_gateway.private_subnet_nat_gtw
+  gateway_id     = each.value.id
+  route_table_id = var.vpc_data.route_table_private
 }

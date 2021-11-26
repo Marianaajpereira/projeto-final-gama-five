@@ -7,8 +7,8 @@ regions:
 
 filters:
   tag:instance-group:
-  - control-plane
-  - workers
+    - control-plane
+    - workers
 
 # set strict to False
 # if True this will make invalid entries
@@ -26,9 +26,9 @@ keyed_groups:
   #  variable would be:
   #  tag_Applications_Oracle
   - key: tags['instance-group']
-    separator: ''
+    separator: ""
   - key: tags['instance-sub-group']
-    separator: ''
+    separator: ""
 
 hostnames:
   # a list in order of precedence for hostname variables.
@@ -38,11 +38,11 @@ hostnames:
   - private-ip-address
 
 compose:
-# use if you need to connect via the ec2
-# private ip address.
-#
-# this is needed for example in a
-# corporate / company environment where ec2
-# instances don't use a public ip address
-#
+  # use if you need to connect via the ec2
+  # private ip address.
+  #
+  # this is needed for example in a
+  # corporate / company environment where ec2
+  # instances don't use a public ip address
+  #
   ansible_host: private_ip_address
