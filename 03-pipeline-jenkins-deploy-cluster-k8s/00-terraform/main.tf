@@ -4,7 +4,7 @@
 resource "aws_instance" "k8s_master" {
   count = var.instance_k8s_master_object.number_of_nodes
   # ami                         = data.aws_ami.ubuntu.image_id
-  ami           = "ami-09c92d3eb1db3a728"
+  ami           = var.custom_ami
   instance_type = var.instance_k8s_master_object.type
   key_name      = var.instance_k8s_master_object.key_pair
   # iam_instance_profile        = var.instance_k8s_master_object.iam_profile
@@ -44,7 +44,7 @@ resource "aws_instance" "k8s_master" {
 resource "aws_instance" "k8s_worker" {
   count = var.instance_k8s_worker_object.number_of_nodes
   # ami                         = data.aws_ami.ubuntu.image_id
-  ami           = "ami-09c92d3eb1db3a728"
+  ami           = var.custom_ami
   instance_type = var.instance_k8s_worker_object.type
   key_name      = var.instance_k8s_worker_object.key_pair
   # iam_instance_profile        = var.instance_k8s_master_object.iam_profile

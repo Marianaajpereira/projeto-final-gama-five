@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# cd 03-pipeline-jenkins-deploy-cluster-k8s/00-terraform/
+cd 03-pipeline-jenkins-deploy-cluster-k8s/00-terraform/
 
-cd 00-terraform/
+# cd 00-terraform/
 
 terraform init
 terraform fmt

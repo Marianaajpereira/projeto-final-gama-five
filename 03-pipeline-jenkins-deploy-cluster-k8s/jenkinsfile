@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone repo') {
+            steps {
+                git url: 'https://github.com/Marianaajpereira/projeto-final-gama-five', branch: 'master'
+            }
+        }
+        stage('Build infrastructure') {
+            steps {
+                sh "chmod +x -R ${env.WORKSPACE}"
+                sh "03-pipeline-jenkins-deploy-cluster-k8s/00-deploy_infra.sh"
+            }
+        }
+        stage('Configure cluster nodes') {
+            steps {
+                sh "chmod +x -R ${env.WORKSPACE}"
+                sh "03-pipeline-jenkins-deploy-cluster-k8s/01-deploy_configs.sh"
+            }
+        }
+        stage('Initialize master node') {
+            steps {
+                sh "03-pipeline-jenkins-deploy-cluster-k8s/02-init-control-plane-master.sh"
+            }
+        }
+        stage('Join worker nodes') {
+            steps {
+                sh "03-pipeline-jenkins-deploy-cluster-k8s/03-join-worker-nodes-to-cluster.sh"
+            }
+        }
+        stage('Configure cluster network') {
+            steps {
+                sh "03-pipeline-jenkins-deploy-cluster-k8s/04-deploy-cluster-network-template.sh"
+            }
+        }
+    }
+}

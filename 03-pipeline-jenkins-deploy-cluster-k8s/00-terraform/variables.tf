@@ -5,6 +5,11 @@ variable "project" {
   })
 }
 
+variable "custom_ami" {
+  description = "AMI builded in K8s pipeline."
+  type = string
+}
+
 variable "container_orchestration" {
   description = "Container orchestration engine details."
   type = object({

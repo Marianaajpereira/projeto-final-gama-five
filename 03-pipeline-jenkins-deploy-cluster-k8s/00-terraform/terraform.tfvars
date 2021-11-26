@@ -2,6 +2,8 @@ project = {
   name = "projeto-final-gama-five"
 }
 
+custom_ami = "ami-05cae7d81b1a005ac"
+
 nlb_lb_proxy_object = {
   is_internal = false
   name        = "nlb-k8s-proxy"
