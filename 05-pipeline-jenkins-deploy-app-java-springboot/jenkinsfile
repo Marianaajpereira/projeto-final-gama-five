@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone repo') {
+            steps {
+                git url: 'https://github.com/Marianaajpereira/projeto-final-gama-five', branch: 'master'
+            }
+        }
+        stage('Deploy Application') {
+            steps {
+                sh "chmod +x -R ${env.WORKSPACE}"
+                sh "05-pipeline-jenkins-deploy-app-java-springboot/00-deploy-app.sh"
+            }
+        }
+    }
+}
