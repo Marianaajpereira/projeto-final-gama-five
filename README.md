@@ -87,13 +87,13 @@ sh user-data.sh
 cd 00-pipeline-shell-deploy-jenkins/ && sh deploy.sh
 ```
 
-Para mais detalhes desta etapa, clique aqui.
+Para mais detalhes desta etapa, [clique aqui](https://github.com/Marianaajpereira/projeto-final-gama-five/tree/master/99-pipeline-shell-deploy-jenkins).
 
 
 
 **Pipeline de criação da imagem do K8s**
 
-Para mais detalhes desta etapa, clique aqui.
+Para mais detalhes desta etapa, [clique aqui](https://github.com/Marianaajpereira/projeto-final-gama-five/tree/master/01-pipeline-jenkins-deploy-ami-k8s).
 
 
 
