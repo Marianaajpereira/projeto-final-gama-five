@@ -80,7 +80,7 @@ resource "aws_route_table_association" "associação_subnets_a_route_table_priva
 
 resource "aws_instance" "ec2-privada-db-dev" {
   subnet_id = aws_subnet.subnets_privadas_db-dev.id
-  ami= "ami-0e66f5495b4efdd0f"
+  ami= "ami-0ad8b2618d5184b87"
   instance_type = "t3.large" 
   root_block_device {
     encrypted = true
@@ -94,7 +94,7 @@ resource "aws_instance" "ec2-privada-db-dev" {
 
 resource "aws_instance" "ec2-privada-db-stage" {
   subnet_id = aws_subnet.subnets_privadas_db-stage.id
-  ami= "ami-0e66f5495b4efdd0f"
+  ami= "ami-0ad8b2618d5184b87"
   instance_type = "t3.large" 
   root_block_device {
     encrypted = true
@@ -109,7 +109,7 @@ resource "aws_instance" "ec2-privada-db-stage" {
 
 resource "aws_instance" "ec2-privada-db-prod" {
   subnet_id = aws_subnet.subnets_privadas_db-prod.id
-  ami= "ami-0e66f5495b4efdd0f"
+  ami= "ami-0ad8b2618d5184b87"
   instance_type = "t3.large" 
   root_block_device {
     encrypted = true
