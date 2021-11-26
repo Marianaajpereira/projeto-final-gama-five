@@ -62,5 +62,5 @@ resource "aws_route" "rtb_nat_gtw_routes" {
   for_each = aws_nat_gateway.private_subnet_nat_gtw
   route_table_id = var.vpc_data.route_table_private
   nat_gateway_id = each.value.id
-  destination_cidr_block    = "10.60.0.0/16"
+  destination_cidr_block    = "0.0.0.0/0"
 }
