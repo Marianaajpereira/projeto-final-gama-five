@@ -124,7 +124,13 @@ resource "aws_instance" "ec2-privada-db-prod" {
 
 
 output "private-db-subnets" {
-  value = [aws_subnet.subnets_privadas_db-dev.id, aws_subnet.subnets_privadas_db-stage.id, aws_subnet.subnets_privadas_db-prod.id]
+  value = ["Dev Subnet ID: ${aws_subnet.subnets_privadas_db-dev.id}",
+  "Stage Subnet ID: ${aws_subnet.subnets_privadas_db-stage.id}", 
+  "Prod Subnet ID: ${aws_subnet.subnets_privadas_db-prod.id}",
+  "Dev Instance IP: ${aws_instance.ec2-privada-db-dev.private_ip}",
+  "Stage Instance IP: ${aws_instance.ec2-privada-db-stage.private_ip}",
+  "Prod Instance IP: ${aws_instance.ec2-privada-db-prod.private_ip}"
+  ]
   
 }
 
