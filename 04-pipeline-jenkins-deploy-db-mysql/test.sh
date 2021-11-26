@@ -18,7 +18,7 @@
 # fi
 # EOF
 
-ping1=$(telnet 10.60.20.103 3306)
+ping1=$(telnet 10.60.20.103 3307)
 if [[ ! -z "$ping1" ]];
 then 
     echo "::::: Porta 3306 liberada :::::"
