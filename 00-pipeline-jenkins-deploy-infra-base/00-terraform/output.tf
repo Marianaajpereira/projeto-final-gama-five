@@ -12,4 +12,3 @@ output "nat-gtw-ids" {
     "IDs: ${item.id}"
   ]
 }
-

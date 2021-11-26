@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------------
-# Private subnets for Kubernetes environmenta nd private route table 
+# Private subnets for Kubernetes environment nd private route table 
 # association
 
 resource "aws_subnet" "k8s_subnets_private" {
