@@ -99,7 +99,7 @@ resource "aws_lb_listener" "listener_k8s_master_api" {
 # Kubernetes Cluster API entry point Network Load Balancer (NLB) listener
 # app java porta 30000
 
-resource "aws_lb_listener" "listener_k8s_master_api" {
+resource "aws_lb_listener" "listener_k8s_master_app_30000" {
   load_balancer_arn = aws_lb.nlb_proxy.arn
   port              = "30000"
   protocol          = "TCP"
