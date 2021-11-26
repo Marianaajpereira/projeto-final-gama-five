@@ -3,9 +3,6 @@
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,linux,ansible,terraform
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,linux,ansible,terraform
 
-### Data Files ###
-.known_data
-
 ### Ansible ###
 *.retry
 
@@ -40,7 +37,7 @@ crash.log
 # control as they are data points which are potentially sensitive and subject
 # to change depending on the environment.
 #
-#*.tfvars
+# *.tfvars
 
 # Ignore override files as they are usually used to override resources locally and so
 # are not checked in
