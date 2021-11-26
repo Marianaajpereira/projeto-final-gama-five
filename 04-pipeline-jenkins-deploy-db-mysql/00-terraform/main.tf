@@ -14,7 +14,7 @@
 resource "aws_subnet" "subnets_privadas_db-dev" {
   vpc_id = var.vpc_data.vpc_id
   availability_zone = "sa-east-1a"
-  cidr_block = "10.60.20.0"
+  cidr_block = "10.60.20.0/24"
   tags = {
     "Name" = "subnet-privada-db-dev"
   }
@@ -23,7 +23,7 @@ resource "aws_subnet" "subnets_privadas_db-dev" {
 resource "aws_subnet" "subnets_privadas_db-stage" {
   vpc_id = var.vpc_data.vpc_id
   availability_zone = "sa-east-1b"
-  cidr_block = "10.60.30.0"
+  cidr_block = "10.60.30.0/24"
   tags = {
     "Name" = "subnet-privada-db-stage"
   }
@@ -32,7 +32,7 @@ resource "aws_subnet" "subnets_privadas_db-stage" {
 resource "aws_subnet" "subnets_privadas_db-prod" {
   vpc_id = var.vpc_data.vpc_id
   availability_zone = "sa-east-1a"
-  cidr_block = "10.60.40.0"
+  cidr_block = "10.60.40.0/24"
   tags = {
     "Name" = "subnet-privada-db-prod"
   }
