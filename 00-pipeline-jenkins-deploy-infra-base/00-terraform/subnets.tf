@@ -59,8 +59,9 @@ resource "aws_nat_gateway" "private_subnet_nat_gtw" {
 # NAT gateways for private subnets external (internet) access association
 
 resource "aws_route" "rtb_nat_gtw_routes" {
-  for_each = aws_nat_gateway.private_subnet_nat_gtw
+  # for_each = aws_nat_gateway.private_subnet_nat_gtw
   route_table_id = var.vpc_data.route_table_private
-  nat_gateway_id = each.value.id
+  # nat_gateway_id = each.value.id
+  nat_gateway_id = aws_nat_gateway.private_subnet_nat_gtw[0]
   destination_cidr_block    = "0.0.0.0/0"
 }
