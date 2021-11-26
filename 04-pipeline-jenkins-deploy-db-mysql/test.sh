@@ -1,6 +1,6 @@
 #!/bin/bash
 cd 01-pipeline-jenkins-deploy-ami-k8s/00-terraform
-uri=$(terraform output | grep public_ip | awk '{print $2;exit}' | sed -e "s/\",//g")
+uri=$(terraform output | grep private_ip | awk '{print $2;exit}' | sed -e "s/\",//g")
 
 echo $uri
 
