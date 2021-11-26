@@ -13,3 +13,11 @@ data "aws_ami" "k8s-gamafive" {
 
   owners = ["099720109477"] # Canonical
 }
+
+data "aws_subnet_ids" "public_subnet_id_list" {
+  vpc_id = var.vpc_data.vpc_id
+
+  tags = {
+    "Name" = "subnet-public-gama-five*"
+  }
+}
