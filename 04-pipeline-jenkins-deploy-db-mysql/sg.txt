@@ -5,17 +5,23 @@
             "GroupName": "sgPrivateDbGamaFive",
             "IpPermissions": [
                 {
-                    "IpProtocol": "-1",
-                    "IpRanges": [],
-                    "Ipv6Ranges": [],
-                    "PrefixListIds": [],
-                    "UserIdGroupPairs": [
+                    "FromPort": 3306,
+                    "IpProtocol": "tcp",
+                    "IpRanges": [
                         {
-                            "Description": "SG rule mysql access.",
-                            "GroupId": "sg-0cfc617f0fcf3a5a4",
-                            "UserId": "720106478682"
+                            "CidrIp": "0.0.0.0/0",
+                            "Description": "mysql access"
                         }
-                    ]
+                    ],
+                    "Ipv6Ranges": [
+                        {
+                            "CidrIpv6": "::/0",
+                            "Description": "mysql access"
+                        }
+                    ],
+                    "PrefixListIds": [],
+                    "ToPort": 3306,
+                    "UserIdGroupPairs": []
                 }
             ],
             "OwnerId": "720106478682",
@@ -26,13 +32,13 @@
                     "IpRanges": [
                         {
                             "CidrIp": "0.0.0.0/0",
-                            "Description": "SG rule allowing all access to external networks and Internet from Public SG."
+                            "Description": "Libera dados da rede interna"
                         }
                     ],
                     "Ipv6Ranges": [
                         {
                             "CidrIpv6": "::/0",
-                            "Description": "SG rule allowing all access to external networks and Internet from Public SG."
+                            "Description": "Libera dados da rede interna"
                         }
                     ],
                     "PrefixListIds": [],
