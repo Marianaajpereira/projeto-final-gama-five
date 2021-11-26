@@ -5,6 +5,5 @@ resource "aws_security_group" "sg_private_db" {
 
   tags = {
     "Name" = "${var.sg_private_db_object}"
-    "project" = "${var.project.name}"
   }
 } 
