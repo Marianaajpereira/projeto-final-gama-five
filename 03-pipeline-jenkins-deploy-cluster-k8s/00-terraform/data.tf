@@ -23,3 +23,8 @@ data "aws_subnets" "public_subnet_list" {
     "Name" = "subnet-public-gama-five"
   }
 }
+
+data "aws_subnet" "public_subnet_id_list" {
+  for_each = toset(data.aws_subnets.public_subnet_list)
+  id       = each.value
+}
