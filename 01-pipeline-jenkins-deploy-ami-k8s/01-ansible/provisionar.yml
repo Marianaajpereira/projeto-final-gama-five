@@ -1,7 +1,7 @@
 - hosts: all
 
   tasks:
-    - name: "Roda: sudo apt-get update"
+    - name: Update existent packages to latest version
       become: true
       apt:
         upgrade: yes
@@ -16,7 +16,7 @@
     #     - default-jre
     #     - maven
 
-    - name: install packages required by docker
+    - name: Install Docker and Kubernetes dependencies
       become: true
       apt:
         update_cache: yes
@@ -27,20 +27,23 @@
         - curl
         - gpg-agent
         - software-properties-common
+        - net-tools
+        - jq
+        - unzip
 
-    - name: add docker GPG key
+    - name: Add an apt signing key (GPG) for Docker
       become: true
       apt_key:
         url: https://download.docker.com/linux/ubuntu/gpg
         state: present
 
-    - name: add docker apt repo
+    - name: Add Docker apt repo
       become: true
       apt_repository:
         repo: deb https://download.docker.com/linux/ubuntu bionic stable
         state: present
 
-    - name: install docker
+    - name: Install Docker and Containerd
       become: true
       apt:
         update_cache: yes
@@ -50,15 +53,20 @@
         - docker-ce-cli
         - containerd.io
 
-    - name: "Corrigindo docker para o kubernetes"
+    - name: Configuring Docker daemon.json file
+      become: true
       copy:
-        src: "docker/daemon.json"
-        dest: "/etc/docker/daemon.json"
-      become: yes
+        dest: /etc/docker/daemon.json
+        content: |
+          {
+          "exec-opts": ["native.cgroupdriver=systemd"]
+          }
 
-    - name: "Restart docker"
-      shell: sudo systemctl daemon-reload && sudo systemctl restart docker # && sudo systemctl restart kubelet
-      become: yes
+    # - name: "Corrigindo docker para o kubernetes"
+    #   copy:
+    #     src: "docker/daemon.json"
+    #     dest: "/etc/docker/daemon.json"
+    #   become: yes
 
     - name: Remove swapfile from /etc/fstab
       mount:
@@ -73,7 +81,7 @@
       command: swapoff -a
       when: ansible_swaptotal_mb > 0
 
-    - name: Add an apt signing key for Kubernetes
+    - name: Add an apt signing key (GPG) for Kubernetes
       become: true
       apt_key:
         url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
@@ -86,31 +94,76 @@
         state: present
         filename: kubernetes.list
 
-    - name: Install Kubernetes binaries
+    - name: Install Kubernetes
       become: true
-      apt: 
-        name: "{{ packages }}"
-        state: present
+      apt:
         update_cache: yes
-      vars:
-        packages:
+        state: latest
+        name:
           - kubelet 
           - kubeadm 
           - kubectl
+
+    - name: Restart kubelet
+      become: true
+      ansible.builtin.systemd:
+        state: restarted
+        daemon_reload: yes
+        name: kubelet
+
+    - name: Add vm swappiness
+      become: true
+      lineinfile:
+        path: /etc/sysctl.d/k8s.conf
+        line: 'vm.swappiness = 0'
+        state: present
+        create: yes
+
+    - name: Add vm overcommit_memory
+      become: true
+      lineinfile:
+        path: /etc/sysctl.d/k8s.conf
+        line: 'vm.overcommit_memory = 1'
+        state: present
+        create: yes
+
+    - name: Add netbridge config ip4
+      become: true
+      lineinfile:
+        path: /etc/sysctl.d/k8s.conf
+        line: 'net.bridge.bridge-nf-call-iptables = 1'
+        state: present
+        create: yes
+
+    - name: Increase net ipv4 tcp_max_syn_backlog
+      become: true
+      lineinfile:
+        path: /etc/sysctl.d/k8s.conf
+        line: 'net.ipv4.tcp_max_syn_backlog=2621440'
+        state: present
+        create: yes
+
+    - name: update sysctl
+      become: true
+      command: sysctl --system
+
+    - name: Start kubelet
+      become: true
+      systemd:
+        state: started
+        daemon_reload: yes
+        name: kubelet
+        enabled: yes
+
+    - name: Reset kubeadm
+      become: true
+      shell: kubeadm reset --force
 
     # - name: Configure node ip
     #   become: true
     #   lineinfile:
     #     path: /etc/default/kubelet
     #     line: KUBELET_EXTRA_ARGS=--node-ip={{ node_ip }}
-
-    - name: Restart kubelet
-      become: true
-      service:
-        name: kubelet
-        daemon_reload: yes
-        state: restarted
-
 
 
 # ansible-playbook -i hosts provisionar.yml -u ubuntu --private-key ~/Desktop/devops/treinamentoItau
