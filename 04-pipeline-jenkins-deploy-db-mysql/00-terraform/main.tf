@@ -1,11 +1,11 @@
 resource "aws_subnet" "subnets_privadas_db" {
   for_each = toset(var.lista_ambientes_e_azs)
   vpc_id = var.vpc_data.vpc_id
-  availability_zone = var.lista_ambientes_e_azs.value
+  availability_zone = var.lista_ambientes_e_azs.az
   cidr_block = "${var.private_subnet_db_object.cidr_first_block}.${var.private_subnet_db_object.cidr_second_block}.${var.private_subnet_db_object.cidr_third_block}.0/24"
 
   tags = {
-    "Name" = "${var.private_subnet_db_object.name}-${each.key}"
+    "Name" = "${var.private_subnet_db_object.name}-${each.ambiente}"
     "az" = "${each.key}"
     "project" = "${var.project.name}"
   }
