@@ -42,6 +42,11 @@ As tecnologias que utilizamos para o desenvolvimento deste projeto foram:
 - [Springboot](https://spring.io/projects/spring-boot)
 - [MySql](https://www.mysql.com/)
 
+## 📐 Desenho da arquitetura
+
+<h1 align="center">
+<img src="https://github.com/Marianaajpereira/projeto-final-gama-five/blob/master/projeto-gamafive-Final.drawio.png"/>
+</h1>
 
 ## 💻 Iniciando
 
@@ -121,33 +126,12 @@ Para mais detalhes desta etapa, [clique aqui](https://github.com/Marianaajpereir
 
 Repositório Docker: [clique aqui](https://hub.docker.com/repository/docker/marianaajpereira/app-springboot)
 
-
-
----------------------------------------------------------------------------------
----------- DAQUI PRA BAIXO MEXEMOS DEPOIS DE SUBIR A APLICAÇÂO SPRING------------
----------------------------------------------------------------------------------
-
 Tudo pronto! Agora, basta acessar a aplicação, disponível em:
-localhost:3000
-
-Documentação dos endpoints disponível na rota:
-localhost:3000/api-docs
-
-Para acessar a API diretamente no seu browser, acesse https://clinica-pomarola-api.herokuapp.com/
+<network-lb-proxy>:30000
 
 ## ⚙️ Funcionalidades
 Funcionalidades que o sistema oferece:
 - Cadastro e Login de Usuários
-- Cadastro de Clientes e Especialistas
-- Cadastro de Atendimentos e de Históricos de Prontuários
-- Pesquisa
-	- Busca de atendimentos por Status, Paciente, Especialista, Data de agendamento ou de atendimento
-- Criação de Agendamentos
-- Criptografia de senhas
-- Sistema de autenticação de usuário
-- Validação de requisições
-- Mensagens de erro customizadas *user friendly*
-- Documentação dos endpoints
 
 ## 📄 Licença
 
