@@ -74,4 +74,4 @@ instance_k8s_worker_object = {
   }
 }
 
-sg_public_id = "sg-06c268091087ae05d"
+sg_public_id = "sg-0b54d214b8595d7e4"
