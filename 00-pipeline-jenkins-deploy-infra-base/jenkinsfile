@@ -10,7 +10,7 @@ pipeline {
         stage('Build base network infrastructure') {
             steps {
                 sh "chmod +x -R ${env.WORKSPACE}"
-                sh "00-pipeline-jenkins-deploy-infra-base/00-deploy_infra.sh"
+                sh "00-pipeline-jenkins-deploy-infra-base/00-deploy-infra.sh"
             }
         }
     }
