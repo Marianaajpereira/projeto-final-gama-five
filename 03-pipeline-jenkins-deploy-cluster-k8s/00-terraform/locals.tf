@@ -8,7 +8,7 @@ locals {
   ])
 
   public_subnet_id_list = flatten([
-    for subnet in data.aws_subnets.public_subnet_list.ids: subnet.id
+    for subnet in data.aws_subnets.public_subnet_list.ids: subnet
   ])
 
 }
