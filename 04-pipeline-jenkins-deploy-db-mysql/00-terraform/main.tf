@@ -20,7 +20,7 @@ resource "aws_route_table" "route_table_privada"{
   }
 }
 
-resource "aws_route_table_association" "associação subnets a route table privada" {
+resource "aws_route_table_association" "associação_subnets_a_route_table_privada" {
   for_each = aws_subnet.subnets_privadas_db
   subnet_id      = each.subnet_id
   route_table_id = aws_route_table.route_table_privada.id
