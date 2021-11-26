@@ -103,7 +103,7 @@ Para mais detalhes desta etapa, [clique aqui](https://github.com/Marianaajpereir
 
 
 
-**Pipeline de criação do Cluster Multi-Master**
+**Pipeline de criação do Cluster Single-Master**
 
 Para mais detalhes desta etapa, [clique aqui](https://github.com/Marianaajpereira/projeto-final-gama-five/tree/master/03-pipeline-jenkins-deploy-cluster-k8s).
 
