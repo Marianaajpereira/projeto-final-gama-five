@@ -24,7 +24,7 @@ data "aws_subnets" "public_subnet_list" {
   }
 }
 
-data "aws_subnet" "public_subnet_id_list" {
-  for_each = toset(data.aws_subnets.public_subnet_list)
-  id       = each.value
-}
+# data "aws_subnet" "public_subnet_id_list" {
+#   for_each = toset(data.aws_subnets.public_subnet_list.ids)
+#   id       = each.value
+# }
