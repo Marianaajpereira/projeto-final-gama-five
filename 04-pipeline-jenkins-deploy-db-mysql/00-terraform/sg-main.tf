@@ -4,6 +4,6 @@ resource "aws_security_group" "sg_private_db" {
   vpc_id      = var.vpc_data.vpc_id
 
   tags = {
-    "Name" = "${var.sg_private_db_object}"
+    "Name" = "sgPrivateDbGamaFive"
   }
 } 
