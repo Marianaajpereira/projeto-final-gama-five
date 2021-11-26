@@ -99,25 +99,25 @@ Para mais detalhes desta etapa, [clique aqui](https://github.com/Marianaajpereir
 
 **Pipeline de criação da imagem do Banco de dados MySQL**
 
-Para mais detalhes desta etapa, clique aqui.
+Para mais detalhes desta etapa, [clique aqui](https://github.com/Marianaajpereira/projeto-final-gama-five/tree/master/02-pipeline-jenkins-deploy-ami-db-mysql).
 
 
 
 **Pipeline de criação do Cluster Multi-Master**
 
-Para mais detalhes desta etapa, clique aqui.
+Para mais detalhes desta etapa, [clique aqui](https://github.com/Marianaajpereira/projeto-final-gama-five/tree/master/03-pipeline-jenkins-deploy-cluster-k8s).
 
 
 
 **Pipeline de criação das instâncias de Dev, Stage e Prod do Banco de Dados**
 
-Para mais detalhes desta etapa, clique aqui.
+Para mais detalhes desta etapa, [clique aqui](https://github.com/Marianaajpereira/projeto-final-gama-five/tree/master/04-pipeline-jenkins-deploy-db-mysql).
 
 
 
 **Pipeline de criação das instâncias de Dev, Stage e Prod da aplicação Spring**
 
-Para mais detalhes desta etapa, clique aqui.
+Para mais detalhes desta etapa, [clique aqui](https://github.com/Marianaajpereira/projeto-final-gama-five/tree/master/05-pipeline-jenkins-deploy-app-java-springboot).
 
 
 
