@@ -20,7 +20,7 @@ data "aws_subnets" "public_subnet_list" {
     values = [var.vpc_data.vpc_id]
   }
   tags = {
-    "Name" = "subnet-public-gama-five"
+    "Name" = "subnet-public-gama-five*"
   }
 }
 
