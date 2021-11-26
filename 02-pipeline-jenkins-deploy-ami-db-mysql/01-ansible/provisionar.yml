@@ -74,6 +74,16 @@
     #   become: yes
     #   shell: "mysql -u root -p'root' db_dbname < mysql.txt"
 
+    - name: "Copia dump mysql para servidor"
+      copy:
+        src: "sql/db_backup.sql"
+        dest: "/home/ubuntu/"
+      become: yes
+
+    - name: "Restore dump mysql"
+      shell: "mysql -u {{ lookup('env', 'USER') }} -p'{{ lookup('env', 'PASSWORD') }}' {{ lookup('env', 'DATABASE') }} < /home/ubuntu/db_backup.sql"
+
+
 
 
     

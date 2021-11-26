@@ -1,5 +1,21 @@
 - hosts: all
+
   tasks:
+    - name: "Roda: sudo apt-get update"
+      become: true
+      apt:
+        upgrade: yes
+        update_cache: yes
+
+    # - name: "Instala pacotes"
+    #   apt:
+    #     name: "{{ item }}"
+    #     state: latest
+    #   become: yes # roda com sudo
+    #   with_items:
+    #     - default-jre
+    #     - maven
+
     - name: install packages required by docker
       become: true
       apt:
