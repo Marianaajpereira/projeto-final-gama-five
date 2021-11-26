@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd 01-pipeline-jenkins-deploy-infra-base/00-terraform/
+cd 00-pipeline-jenkins-deploy-infra-base/00-terraform/
 
 # cd 00-terraform/
 
