@@ -6,7 +6,7 @@ resource "aws_lb" "nlb_proxy" {
   internal           = var.nlb_lb_proxy_object.is_internal
   load_balancer_type = "network"
   ip_address_type    = "ipv4"
-  subnets            = local.public_subnet_id_list
+  subnets            = data.aws_subnets.public_subnet_list 
 
   tags = {
     "Name"    = "${var.nlb_lb_proxy_object.name}"

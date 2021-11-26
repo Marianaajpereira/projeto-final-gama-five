@@ -7,8 +7,8 @@ locals {
     for subnet in aws_subnet.k8s_subnets_private : subnet.id
   ])
 
-  public_subnet_id_list = flatten([
-    for subnet in data.aws_subnets.public_subnet_list : subnet.id
-  ])
+  # public_subnet_id_list = flatten([
+  #   for subnet in data.aws_subnets.public_subnet_list : subnet.id
+  # ])
 
 }
