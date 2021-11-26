@@ -119,6 +119,8 @@ Para mais detalhes desta etapa, [clique aqui](https://github.com/Marianaajpereir
 
 Para mais detalhes desta etapa, [clique aqui](https://github.com/Marianaajpereira/projeto-final-gama-five/tree/master/05-pipeline-jenkins-deploy-app-java-springboot).
 
+Repositório Docker: [clique aqui](https://hub.docker.com/repository/docker/marianaajpereira/app-springboot)
+
 
 
 ---------------------------------------------------------------------------------

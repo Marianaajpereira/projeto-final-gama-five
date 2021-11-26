@@ -32,6 +32,17 @@ resource "aws_security_group_rule" "master_k8s_ingress_k8s_api" {
   security_group_id = aws_security_group.sg_k8s_master.id
 }
 
+resource "aws_security_group_rule" "master_k8s_ingress_k8s_app_30000" {
+  type              = "ingress"
+  description       = "SG rule allowing TCP access to port 6443 (K8s API Server) to Master SG."
+  from_port         = 30000
+  to_port           = 30000
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  ipv6_cidr_blocks  = ["::/0"]
+  security_group_id = aws_security_group.sg_k8s_master.id
+}
+
 resource "aws_security_group_rule" "master_k8s_egress_all" {
   type              = "egress"
   description       = "SG rule allowing all access to external networks and Internet from Master SG."

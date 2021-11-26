@@ -38,6 +38,26 @@ resource "aws_lb_target_group" "target_group_k8s_master_api" {
   }
 }
 
+resource "aws_lb_target_group" "target_group_k8s_app_30000" {
+  name               = "K8s-masters-api-server-tcp-30000"
+  protocol           = "TCP"
+  target_type        = "instance"
+  port               = 30000
+  vpc_id             = var.vpc_data.vpc_id
+  preserve_client_ip = true
+
+  health_check {
+    enabled  = true
+    protocol = "TCP"
+    port     = 6443
+  }
+
+  tags = {
+    "Name"    = "K8s-masters-api-server-tcp"
+    "project" = "${var.project.name}"
+  }
+}
+
 
 # ----------------------------------------------------------------------------
 # Kubernetes Cluster API entry point Network Load Balancer (NLB) target
@@ -46,6 +66,12 @@ resource "aws_lb_target_group" "target_group_k8s_master_api" {
 resource "aws_lb_target_group_attachment" "attach_k8s_master_api" {
   count            = length(aws_instance.k8s_master)
   target_group_arn = aws_lb_target_group.target_group_k8s_master_api.arn
+  target_id        = aws_instance.k8s_master[count.index].id
+}
+
+resource "aws_lb_target_group_attachment" "attach_k8s_master_app_30000" {
+  count            = length(aws_instance.k8s_master)
+  target_group_arn = aws_lb_target_group.target_group_k8s_app_30000.arn
   target_id        = aws_instance.k8s_master[count.index].id
 }
 
@@ -62,6 +88,25 @@ resource "aws_lb_listener" "listener_k8s_master_api" {
   default_action {
     type             = "forward"
     target_group_arn = aws_lb_target_group.target_group_k8s_master_api.arn
+  }
+
+  tags = {
+    "project" = "${var.project.name}"
+  }
+}
+
+# ----------------------------------------------------------------------------
+# Kubernetes Cluster API entry point Network Load Balancer (NLB) listener
+# app java porta 30000
+
+resource "aws_lb_listener" "listener_k8s_master_api" {
+  load_balancer_arn = aws_lb.nlb_proxy.arn
+  port              = "30000"
+  protocol          = "TCP"
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.target_group_k8s_app_30000.arn
   }
 
   tags = {
